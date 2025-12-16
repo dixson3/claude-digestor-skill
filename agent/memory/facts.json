@@ -1,0 +1,58 @@
+{
+  "project": {
+    "name": "digestor",
+    "type": "claude-skill",
+    "purpose": "Analyzes complex monorepos using Claude Code's native capabilities to generate comprehensive specs for LLM-assisted code generation"
+  },
+  "implementation": {
+    "type": "claude-skill",
+    "location": ".claude/skills/digestor/",
+    "entrypoint": "SKILL.md"
+  },
+  "agents": {
+    "description": "Multi-stage analysis workflow executed by Claude Code",
+    "stages": [
+      {
+        "name": "FileExplorer",
+        "stage": 1,
+        "responsibility": "Discovers and categorizes files/directories, builds initial project map"
+      },
+      {
+        "name": "DependencyAnalyzer",
+        "stage": 2,
+        "responsibility": "Maps package dependencies, internal module relationships"
+      },
+      {
+        "name": "CodeStructureAgent",
+        "stage": 2,
+        "responsibility": "Analyzes classes, functions, modules, exports"
+      },
+      {
+        "name": "PatternDetector",
+        "stage": 3,
+        "responsibility": "Identifies architectural patterns, design patterns, conventions"
+      },
+      {
+        "name": "CodeResearcher",
+        "stage": 4,
+        "responsibility": "Reviews against best practices, produces improvement suggestions"
+      },
+      {
+        "name": "DocGenerator",
+        "stage": 5,
+        "responsibility": "Synthesizes findings into spec files"
+      }
+    ]
+  },
+  "outputs": {
+    "type": "spec-files",
+    "purpose": "Instruct LLM tools about codebase structure and provide guidance for future code generation",
+    "format": {
+      "project-overview.md": "High-level architecture and project summary",
+      "modules/*.md": "Per-module/package detailed specifications",
+      "patterns.md": "Detected architectural patterns and coding conventions",
+      "improvements.md": "CodeResearcher suggestions for improvements",
+      "manifest.json": "Machine-readable index of all specs and metadata"
+    }
+  }
+}

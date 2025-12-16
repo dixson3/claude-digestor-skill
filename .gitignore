@@ -1,0 +1,42 @@
+# Digestor output
+digestor-output/
+test-output/
+*-output/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Agent runtime (session-specific, not committed)
+agent/runtime/
+
+# Environment
+.env
+.env.local
+.envrc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Claude Code local settings (user-specific)
+.claude/settings.local.json
+
+# Logs
+*.log
+logs/
+
+# Build artifacts (if CLI is rebuilt)
+node_modules/
+dist/
+*.tgz
+bun.lock
+*.bun-build
